@@ -12,7 +12,7 @@ def home(request):
     return render(request, 'home.html')
 
 def about(request):
-    url = 'http://www.fabpedigree.com/james/mathmen.htm'
+    url = 'https://toolkit.rescuegroups.org/j/3/list3_layout.php?petfocus_0=204&location_0=&distance_0=&resultSort_0=animalName&resultOrder_0=asc&page_0=1&searchString_0=&action_0=search&animalID=undefined&toolkitIndex=0&toolkitKey=nxhKP5s7'
     raw_html = simple_get(url)
 
     url_parsed = parse_html(raw_html)

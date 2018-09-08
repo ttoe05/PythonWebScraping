@@ -13,4 +13,4 @@ cd djangoTemplateWithAddedModule/
 # Type this to start the python server:
 python manage.py runserver
 
-Open browser and visit localhost:8000
+Open browser and visit localhost:8000/about
