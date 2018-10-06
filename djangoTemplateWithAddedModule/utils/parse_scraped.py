@@ -1,7 +1,12 @@
 from bs4 import BeautifulSoup
+import numpy as np
+import matplotlib as plt
 
+
+info_list = []
 
 def parse_html(raw_html):
+    global info_list
     html = BeautifulSoup(raw_html, 'html.parser')
     pet_info_list = []
 
@@ -19,7 +24,7 @@ def parse_html(raw_html):
     for counter in range(0, len(petName)):
         pet_info_list.append({
             "Name": (str(petName[counter].text).split('Name: ')[1]).split('*')[0].strip(),
-            "image": str(petImage[counter]['src']), 
+            "image": str(petImage[counter]['src']),
             "gender:": str(petGender[counter].text).split('Gender: ')[1].strip(),
             "age:": str(petAge[counter].text).split('General Age:')[1].strip(),
             "fee:": str(adoptionFee[counter].text).split('Adoption fee:')[1].strip(),
@@ -27,5 +32,14 @@ def parse_html(raw_html):
             "coat:": str(coat[counter].text).split('Coat Length:')[1].strip(),
             "lastUpdated:": str(lastUpdated[counter].text).split('Last updated:')[1].strip()
         })
+    info_list = pet_info_list
 
     return pet_info_list
+
+def avgAgeM():
+
+    male_data = np.array([], dtype=float)
+    for avg in info_list:
+        if avg["gender:"].lower() == "male":
+            male_data = np.append(male_data, float(avg["fee:"][1:]))
+    return male_data

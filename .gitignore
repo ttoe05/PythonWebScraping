@@ -1,1 +1,4 @@
 reactApp/node_modules
+reactApp/public/scripts/*.js
+*.pyc
+env
